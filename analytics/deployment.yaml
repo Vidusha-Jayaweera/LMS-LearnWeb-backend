@@ -1,0 +1,25 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics-service
+  namespace: learnweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analytics-service
+  template:
+    metadata:
+      labels:
+        app: analytics-service
+    spec:
+      containers:
+        - name: my-app
+          image: it21349560/analytics-serviceprod:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3001
+      imagePullSecrets:
+        - name: regcred

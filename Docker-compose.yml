@@ -1,0 +1,38 @@
+version: '3'
+services:
+ gatewayService:
+    image: gatewayService
+    ports:
+      - "3001:3001"
+    command: node server.js
+
+ userService:
+    image: userService
+    ports:
+      - "3002:3002"
+    command: node server.js
+
+ productService:
+    image: orderService
+    ports:
+      - "3003:3003"
+    command: node server.js
+
+ cartService:
+    image: courseService
+    ports:
+      - "3004:3004"
+    command: node server.js  
+
+  orderService:
+    image:  notificationService
+    ports:
+      - "3005:3005"
+    command: node server.js
+
+  orderService:
+    image:  analyticsService
+    ports:
+      - "3005:3006"
+    command: node server.js
+    

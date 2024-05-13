@@ -1,0 +1,25 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  namespace: learnweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+        - name: my-app
+          image: it21349560/notification-serviceprod:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3001
+      imagePullSecrets:
+        - name: regcred

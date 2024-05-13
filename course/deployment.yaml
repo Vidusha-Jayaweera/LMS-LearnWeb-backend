@@ -1,0 +1,25 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-service
+  namespace: learnweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-service
+  template:
+    metadata:
+      labels:
+        app: course-service
+    spec:
+      containers:
+        - name: my-app
+          image: it21349560/course-serviceprod:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3001
+      imagePullSecrets:
+        - name: regcred
